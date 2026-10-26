@@ -38,6 +38,7 @@ Scope: orders that count as sales (not canceled or unavailable), placed 2017-01 
 - **A one-day spike on top of a step up:** 2017-11-24 had 1,166 orders, 8.2x the October 2017 daily median. That is consistent with Black Friday, but the dataset has no promotion flag, so the link is likely, not proven.
 - **Delivery:** 96,203 delivered orders, average 12.54 days (median 10.21), 6.79% delivered after the estimated date.
 - **Late delivery and reviews:** late orders average 2.27 stars versus 4.29 for on-time or early orders. This is an association; late orders may differ in other ways.
+- **Late-delivery spikes:** the share of delivered orders arriving after the estimated date was 12.4% for 2017-11 purchases (904 of 7,288), 14.1% for 2018-02 (926 of 6,555) and 19.0% for 2018-03 (1,328 of 7,003); every other month was 10% or lower. 2017-11 was also the highest-volume month, but 2018-02 and 2018-03 were not, so volume alone does not explain the spikes. The cause is not in this dataset.
 - **Geography matters:** São Paulo averages 8.7 days; Amazonas, Alagoas and Pará average 24 to 26 days. Alagoas has the highest late rate (21.5%). Amazonas and Rondônia have the largest buffer between promised and actual delivery time (about 19.5 and 20.4 days) and low late rates (2.8% and 2.9%).
 - **Rio de Janeiro stands out:** 12.1% late across 12,310 delivered orders, against 4.1% to 4.6% for São Paulo, Minas Gerais and Paraná. I did not test why.
 - **Seller concentration:** the top 10% of the 3,029 active sellers earn 67.3% of revenue.
