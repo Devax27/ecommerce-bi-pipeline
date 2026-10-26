@@ -38,12 +38,13 @@ def number(value: float | None, decimals: int = 0) -> str:
 
 
 def show(fig) -> None:
-    """Render a Plotly figure at full container width."""
-    fig.update_layout(margin={"l": 10, "r": 10, "t": 50, "b": 10})
+    """Render a Plotly figure at full container width, without touch-zoom or a toolbar over the title."""
+    fig.update_layout(margin={"l": 10, "r": 10, "t": 50, "b": 10}, dragmode=False)
+    config = {"displayModeBar": False, "scrollZoom": False}
     try:
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, width="stretch", config=config)
     except TypeError:  # older Streamlit versions
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True, config=config)
 
 
 # ---------------------------------------------------------------- load data
