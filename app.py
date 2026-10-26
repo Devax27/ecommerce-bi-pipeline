@@ -138,8 +138,10 @@ with delivery_tab:
                 st.info("No state has 100 or more delivered orders in this selection.")
             else:
                 fig = px.bar(by_state.sort_values("late_rate_pct"), x="late_rate_pct", y="customer_state",
-                             orientation="h", title="Late delivery rate by state (%)",
-                             labels={"late_rate_pct": "Late rate (%)", "customer_state": "State"})
+                orientation="h", title="Late delivery rate by state (%)",
+                labels={"late_rate_pct": "Late rate (%)", "customer_state": "State"})
+                fig.update_yaxes(dtick=1)  # label every state, not every other one
+                fig.update_layout(height=max(350, 26 * len(by_state) + 120))
                 show(fig)
         with right:
             md = dm.monthly_delivery(delivery_f)
@@ -164,7 +166,7 @@ with products_tab:
         st.info("No category data for the selected months.")
     else:
         fig = px.bar(cats.sort_values("revenue"), x="revenue", y="category", orientation="h",
-                     color="avg_review_score", color_continuous_scale="RdYlGn",
+                     color="avg_review_score", color_continuous_scale="RdYlGn",range_color=(3.5, 4.5),
                      title="Top categories by revenue (colour = average review score)",
                      labels={"revenue": "Revenue (R$)", "category": "Category", "avg_review_score": "Avg review"})
         show(fig)
