@@ -14,3 +14,4 @@ All sales KPIs use orders where `counts_as_sale = 1` (status not canceled/unavai
 | Category | `product_category_name_english` ('unknown' if the product has no category). |
 | Review score | One review per order (the latest). In category and seller tables it is averaged over item rows, so an order with several items counts once per item. |
 | Payment mix | An order paid with several payment types counts once in each type. |
+| Payment value | SUM(payments.payment_value). Includes freight, so it is larger than item-price revenue. |

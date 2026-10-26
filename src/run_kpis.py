@@ -46,8 +46,9 @@ def cross_check_monthly(sql_monthly: pd.DataFrame) -> None:
         orders=("order_id", "nunique"), revenue=("price", "sum")
     )
 
+    expected = expected.rename(columns={"orders": "orders_pd", "revenue": "revenue_pd"})
     compared = sql_monthly.set_index("purchase_month")[["orders", "revenue"]].join(
-        expected, rsuffix="_pd", how="outer"
+        expected, how="outer"
     )
     if compared.isna().any().any():
         raise ValueError("Cross-check failed: the SQL and pandas results cover different months")
