@@ -1,0 +1,135 @@
+﻿
+======================================================================
+1. MISSING VALUES
+======================================================================
+[orders] columns with missing values:
+  order_approved_at: 160 (0.2%)
+  order_delivered_carrier_date: 1,783 (1.8%)
+  order_delivered_customer_date: 2,965 (3.0%)
+[customers] columns with missing values:
+  none
+[order_items] columns with missing values:
+  none
+[payments] columns with missing values:
+  none
+[reviews] columns with missing values:
+  review_comment_title: 87,656 (88.3%)
+  review_comment_message: 58,247 (58.7%)
+[products] columns with missing values:
+  product_category_name: 610 (1.9%)
+  product_name_lenght: 610 (1.9%)
+  product_description_lenght: 610 (1.9%)
+  product_photos_qty: 610 (1.9%)
+  product_weight_g: 2 (0.0%)
+  product_length_cm: 2 (0.0%)
+  product_height_cm: 2 (0.0%)
+  product_width_cm: 2 (0.0%)
+[sellers] columns with missing values:
+  none
+[translation] columns with missing values:
+  none
+[geolocation] columns with missing values:
+  none
+
+======================================================================
+2. DUPLICATES
+======================================================================
+[orders] fully duplicated rows: 0 | duplicate rows by key order_id: 0
+[customers] fully duplicated rows: 0 | duplicate rows by key customer_id: 0
+[order_items] fully duplicated rows: 0 | duplicate rows by key ['order_id', 'order_item_id']: 0
+[payments] fully duplicated rows: 0 | duplicate rows by key ['order_id', 'payment_sequential']: 0
+[reviews] fully duplicated rows: 0 | duplicate rows by key review_id: 814
+[products] fully duplicated rows: 0 | duplicate rows by key product_id: 0
+[sellers] fully duplicated rows: 0 | duplicate rows by key seller_id: 0
+[translation] fully duplicated rows: 0 | duplicate rows by key product_category_name: 0
+[geolocation] fully duplicated rows: 261,831
+[customers] unique people (customer_unique_id): 96,096
+
+======================================================================
+3. REFERENTIAL INTEGRITY (orphan rows)
+======================================================================
+orders -> customers: 0 orphan rows
+order_items -> orders: 0 orphan rows
+order_items -> products: 0 orphan rows
+order_items -> sellers: 0 orphan rows
+payments -> orders: 0 orphan rows
+reviews -> orders: 0 orphan rows
+products -> category translation: 13 orphan rows
+orders with no order_items rows: 775
+
+======================================================================
+4. ORDERS: STATUS AND DATES
+======================================================================
+order_status
+delivered      96478
+shipped         1107
+canceled         625
+unavailable      609
+invoiced         314
+processing       301
+created            5
+approved           2
+
+purchase date range: 2016-09-04 21:15:19 to 2018-10-17 17:30:18
+
+purchases per month (first and last 3 months):
+order_purchase_timestamp
+2016-09       4
+2016-10     324
+2016-12       1
+2018-08    6512
+2018-09      16
+2018-10       4
+Freq: M
+
+delivered orders missing a customer delivery date: 8
+non-delivered orders that have a customer delivery date: 6
+delivered to customer BEFORE purchase: 0
+delivered to customer BEFORE carrier pickup: 23
+
+======================================================================
+5. VALUE SANITY
+======================================================================
+               price  freight_value
+count  112650.000000  112650.000000
+mean      120.653739      19.990320
+std       183.633928      15.806405
+min         0.850000       0.000000
+25%        39.900000      13.080000
+50%        74.990000      16.260000
+75%       134.900000      21.150000
+max      6735.000000     409.680000
+
+items with price <= 0: 0
+items with negative freight: 0
+
+payment types:
+payment_type
+credit_card    76795
+boleto         19784
+voucher         5775
+debit_card      1529
+not_defined        3
+
+payments with value <= 0: 9
+
+review scores:
+review_score
+1    11424
+2     3151
+3     8179
+4    19142
+5    57328
+
+product numeric columns:
+       product_weight_g  product_length_cm  product_height_cm  product_width_cm
+count      32949.000000       32949.000000       32949.000000      32949.000000
+mean        2276.472488          30.815078          16.937661         23.196728
+std         4282.038731          16.914458          13.637554         12.079047
+min            0.000000           7.000000           2.000000          6.000000
+25%          300.000000          18.000000           8.000000         15.000000
+50%          700.000000          25.000000          13.000000         20.000000
+75%         1900.000000          38.000000          21.000000         30.000000
+max        40425.000000         105.000000         105.000000        118.000000
+
+customer states: 27
